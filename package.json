@@ -1,6 +1,6 @@
 {
   "name": "speccapitals-common",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "通用React组件库，从speccapitals-crm项目中提取",
   "type": "module",
   "main": "dist/index.js",
