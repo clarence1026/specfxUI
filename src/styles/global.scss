@@ -1,0 +1,184 @@
+/**
+ * 全局样式
+ * 源自 crm-front/src/common/styling/globalStyle.js
+ */
+
+@import "./variables.scss";
+@import "./mixins.scss";
+
+// 字体定义
+@include font-face("ubuntu-font", "/fonts/UbuntuRegular/UbuntuRegular");
+@include font-face("ubuntu-font", "/fonts/UbuntuLight/UbuntuLight", 300);
+@include font-face("ubuntu-font", "/fonts/UbuntuMedium/UbuntuMedium", 500);
+@include font-face("ubuntu-font", "/fonts/UbuntuBold/UbuntuBold", 600);
+
+// 基础样式重置
+:global {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    &:after,
+    &:before {
+      box-sizing: border-box;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: none;
+    position: relative;
+    height: 100%;
+    @include rem-baseline(100%);
+    @include respond-to(sm) {
+      @include rem-baseline(90%);
+    }
+  }
+
+  body {
+    min-width: 320px;
+    position: relative;
+    line-height: 1.35;
+    font-family: $font-family;
+    overflow: auto;
+    cursor: default;
+    height: 100%;
+  }
+
+  // 表单元素
+  form {
+    position: relative;
+  }
+
+  select {
+    font-family: $font-family;
+    outline: none;
+  }
+
+  input,
+  textarea {
+    font-family: $font-family;
+    border: 1px solid;
+    display: inline-block;
+    width: 100%;
+    font-size: $font-size-regular;
+    padding: $spacing-xs $spacing-sm;
+    outline: none;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input,
+  textarea,
+  select,
+  input:disabled,
+  textarea:disabled,
+  select:disabled,
+  input[type="date"],
+  input[type="date"]:disabled {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  // 内联元素
+  span,
+  strong,
+  label,
+  i {
+    display: inline-block;
+  }
+
+  // 按钮
+  button {
+    font-family: $font-family;
+    outline: none;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transition: all 0.3s ease;
+  }
+
+  // 链接
+  a {
+    transition: all 0.3s ease;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      outline: none;
+    }
+  }
+
+  // 预格式化文本
+  pre {
+    font-family: $font-family;
+    white-space: pre-wrap;
+    font-size: $font-size-regular;
+  }
+
+  // 列表
+  ul {
+    list-style-type: none;
+  }
+
+  // 标题
+  h1 {
+    line-height: 24px;
+    font-size: 24px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+
+    @include respond-to(sm) {
+      font-size: 26px;
+      line-height: 31px;
+    }
+  }
+
+  h2 {
+    line-height: 32px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  h3 {
+    line-height: 24px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  h4 {
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  h5 {
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

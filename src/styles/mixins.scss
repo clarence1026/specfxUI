@@ -1,0 +1,241 @@
+/**
+ * 混合样式
+ * 源自 crm-front/src/common/styling/_mixins-scss
+ */
+
+// 响应式断点
+$xl: 1539px;
+$lg: 1150px;
+$md: 991px;
+$sm: 767px;
+$xs: 479px;
+$xxs: 360px;
+
+// 响应式混合
+@mixin respond-to($media, $width: normal) {
+  @if ($width == normal) {
+    @if $media == xl {
+      @media only screen and (max-width: $xl) {
+        @content;
+      }
+    } @else if $media == lg {
+      @media only screen and (max-width: $lg) {
+        @content;
+      }
+    } @else if $media == md {
+      @media only screen and (max-width: $md) {
+        @content;
+      }
+    } @else if $media == sm {
+      @media only screen and (max-width: $sm) {
+        @content;
+      }
+    } @else if $media == xs {
+      @media only screen and (max-width: $xs) {
+        @content;
+      }
+    } @else if $media == xxs {
+      @media only screen and (max-width: $xxs) {
+        @content;
+      }
+    }
+  } @else {
+    @if $media == md {
+      @media only screen and (max-width: ($md - 121px)) {
+        @content;
+      }
+    }
+  }
+}
+
+// 最大宽度媒体查询
+@mixin max-width($bp) {
+  @media all and (max-width: #{$bp}px) {
+    @content;
+  }
+}
+
+// 最小宽度媒体查询
+@mixin min-width($bp) {
+  @media all and (min-width: #{$bp}px) {
+    @content;
+  }
+}
+
+// 响应式属性计算
+@mixin flex-prop($prop, $bp1, $val1, $bp2, $val2) {
+  $val: $val1 - $val2;
+  $bp: $bp1 - $bp2;
+  #{$prop}: calc(
+    #{$val1}px + (#{$val}* 100 /#{$bp}) * 1vw - (#{$bp1}px * #{$val}/#{$bp})
+  );
+}
+
+// REM 单位转换
+$rem-baseline: 14px !default;
+$rem-fallback: false !default;
+$rem-px-only: false !default;
+
+@function rem-separator($list, $separator: false) {
+  @if $separator == "comma" or $separator == "space" {
+    @return append($list, null, $separator);
+  }
+
+  @if function-exists("list-separator") == true {
+    @return list-separator($list);
+  }
+
+  $test-list: ();
+  @each $item in $list {
+    $test-list: append($test-list, $item, space);
+  }
+
+  @return if($test-list == $list, space, comma);
+}
+
+@mixin rem-baseline($zoom: 100%) {
+  font-size: $zoom / 16px * $rem-baseline;
+}
+
+@function rem-convert($to, $values...) {
+  $result: ();
+  $separator: rem-separator($values);
+
+  @each $value in $values {
+    @if type-of($value) == "number" and unit($value) == "rem" and $to == "px" {
+      $result: append($result, $value / 1rem * $rem-baseline, $separator);
+    } @else if
+      type-of($value) ==
+      "number" and
+      unit($value) ==
+      "px" and
+      $to ==
+      "rem"
+    {
+      $result: append($result, $value / $rem-baseline * 1rem, $separator);
+    } @else if type-of($value) == "list" {
+      $value-separator: rem-separator($value);
+      $value: rem-convert($to, $value...);
+      $value: rem-separator($value, $value-separator);
+      $result: append($result, $value, $separator);
+    } @else {
+      $result: append($result, $value, $separator);
+    }
+  }
+
+  @return if(length($result) == 1, nth($result, 1), $result);
+}
+
+@function rem($values...) {
+  @if $rem-px-only {
+    @return rem-convert(px, $values...);
+  } @else {
+    @return rem-convert(rem, $values...);
+  }
+}
+
+@mixin rem($properties, $values...) {
+  @if type-of($properties) == "map" {
+    @each $property in map-keys($properties) {
+      @include rem($property, map-get($properties, $property));
+    }
+  } @else {
+    @each $property in $properties {
+      @if $rem-fallback or $rem-px-only {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if not $rem-px-only {
+        #{$property}: rem-convert(rem, $values...);
+      }
+    }
+  }
+}
+
+// 字体定义
+@mixin font-face(
+  $font-family,
+  $file-path,
+  $weight: normal,
+  $style: normal,
+  $asset-pipeline: false
+) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+
+    @if $asset-pipeline == true {
+      src: font-url("#{$file-path}.woff") format("woff"),
+        font-url("#{$file-path}.ttf") format("truetype");
+    } @else {
+      src: url("#{$file-path}.woff") format("woff"),
+        url("#{$file-path}.ttf") format("truetype");
+    }
+  }
+}
+
+// 网格布局
+.full-page-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 240px;
+  @include respond-to(xl) {
+    padding-left: 200px;
+  }
+  @include respond-to(md) {
+    padding: 0;
+  }
+  &-crm {
+    padding: 0 0 0 40px !important;
+    flex: 1;
+
+    @include respond-to(md) {
+      padding: 0 0 0 0 !important;
+    }
+  }
+  &.ar {
+    padding-left: 0;
+    padding-right: 240px;
+    @include respond-to(xl) {
+      padding-left: 0;
+      padding-right: 200px;
+    }
+    @include respond-to(sm) {
+      padding-right: 0;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  padding: 0 9%;
+  margin: 0 auto;
+  @include respond-to(xl) {
+    padding: 0 5%;
+  }
+  @include respond-to(sm) {
+    padding: 0 10px;
+  }
+}
+
+// 常用Flex布局辅助类
+.ai-fs {
+  align-items: flex-start;
+}
+
+.ai-centr {
+  align-items: center;
+}
+
+.jc-centr {
+  justify-content: center;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.fd-column {
+  flex-direction: column;
+}

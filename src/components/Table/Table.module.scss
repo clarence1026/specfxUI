@@ -1,0 +1,279 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+// 表格容器
+.tableContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: $spacing-lg;
+}
+
+// 表格操作区
+.tableActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: $spacing-sm;
+  gap: $spacing-sm;
+}
+
+// 表格大小变体
+.tableSmall {
+  :global(.ReactTable .rt-thead .rt-th),
+  :global(.ReactTable .rt-tbody .rt-td) {
+    padding: $spacing-xxs $spacing-xs;
+  }
+}
+
+.tableMedium {
+  :global(.ReactTable .rt-thead .rt-th),
+  :global(.ReactTable .rt-tbody .rt-td) {
+    padding: $spacing-xs $spacing-sm;
+  }
+}
+
+.tableLarge {
+  :global(.ReactTable .rt-thead .rt-th),
+  :global(.ReactTable .rt-tbody .rt-td) {
+    padding: $spacing-sm $spacing-md;
+  }
+}
+
+// 带边框的表格
+.tableBordered {
+  :global(.ReactTable) {
+    border: 1px solid $table-border-color;
+    border-radius: $table-radius;
+    overflow: hidden;
+  }
+
+  :global(.ReactTable .rt-thead .rt-th),
+  :global(.ReactTable .rt-tbody .rt-td) {
+    border-right: 1px solid $table-border-color;
+  }
+
+  :global(.ReactTable .rt-thead) {
+    border-bottom: 1px solid $table-border-color;
+  }
+
+  :global(.ReactTable .rt-tbody .rt-tr-group) {
+    border-bottom: 1px solid $table-border-color;
+  }
+}
+
+// 全局表格样式
+:global {
+  // 表头样式
+  .ReactTable .rt-thead {
+    background-color: $table-header-bg;
+    font-weight: 500;
+  }
+
+  .ReactTable .rt-thead .rt-th {
+    text-align: left;
+    color: $table-header-color;
+  }
+
+  // 表格内容样式
+  .ReactTable .rt-tbody .rt-tr {
+    cursor: pointer;
+  }
+
+  .ReactTable .rt-tbody .rt-tr:hover {
+    background-color: $table-row-hover-bg;
+  }
+
+  .ReactTable .rt-tbody .rt-tr.-odd {
+    background-color: $table-row-odd-bg;
+  }
+
+  .ReactTable .rt-tbody .rt-tr.-even {
+    background-color: $table-row-even-bg;
+  }
+
+  // 分页样式
+  .ReactTable .-pagination {
+    box-shadow: none;
+    border-top: 1px solid $table-border-color;
+  }
+
+  .ReactTable .-pagination .-btn {
+    color: $primary;
+    background-color: transparent;
+  }
+
+  .ReactTable .-pagination .-btn:not([disabled]):hover {
+    background-color: $table-row-hover-bg;
+    color: $primary;
+  }
+
+  .ReactTable .-pagination input,
+  .ReactTable .-pagination select {
+    border: 1px solid $table-border-color;
+    border-radius: $border-radius;
+  }
+
+  // 加载状态
+  .ReactTable .rt-tbody .rt-tr-group .rt-tr.-padRow {
+    height: 100%;
+  }
+
+  .ReactTable .-loading {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .ReactTable .-loading > div {
+    color: $primary;
+  }
+}
+
+// 响应式表格样式
+.responsiveTable {
+  width: 100%;
+  margin-bottom: $spacing-md;
+  border: 1px solid $table-border-color;
+  border-radius: $table-radius;
+  overflow: hidden;
+
+  :global {
+    .responsive-table-content {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .sc-responsive-table {
+      width: 100%;
+
+      &-thead {
+        display: flex;
+        background-color: $table-header-bg;
+        color: $table-header-color;
+        font-weight: 500;
+        padding: $spacing-xs $spacing-sm;
+
+        span {
+          flex: 1;
+          padding: $spacing-xs;
+
+          &:last-child {
+            width: 60px;
+            flex: 0 0 60px;
+          }
+        }
+      }
+
+      &-tbody {
+        .sc-responsive-table-row {
+          border-top: 1px solid $table-border-color;
+
+          &:nth-child(odd) {
+            background-color: $table-row-odd-bg;
+          }
+
+          &:nth-child(even) {
+            background-color: $table-row-even-bg;
+          }
+
+          &:hover {
+            background-color: $table-row-hover-bg;
+          }
+
+          &-preview {
+            display: flex;
+            padding: $spacing-xs $spacing-sm;
+            cursor: pointer;
+            outline: none;
+          }
+
+          &-item {
+            flex: 1;
+            padding: $spacing-xs;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      &-preview-main {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      &-toggle-btn {
+        width: 60px;
+        flex: 0 0 60px;
+        text-align: center;
+        color: $primary;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &-row-details {
+        padding: $spacing-xs $spacing-md $spacing-md;
+        background-color: rgba(0, 0, 0, 0.02);
+        border-top: 1px solid $table-border-color;
+      }
+
+      &-details-item {
+        display: flex;
+        margin-bottom: $spacing-xs;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &-detail-label {
+        font-weight: 500;
+        margin-right: $spacing-sm;
+        min-width: 120px;
+      }
+
+      &-detail-value {
+        flex: 1;
+      }
+    }
+
+    .responsive-table-pagination {
+      display: flex;
+      justify-content: flex-end;
+      padding: $spacing-sm;
+      border-top: 1px solid $table-border-color;
+    }
+  }
+
+  // 响应式适配
+  @include respond-to(sm) {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+
+    :global {
+      .sc-responsive-table {
+        &-thead {
+          span:not(:first-child):not(:last-child) {
+            display: none;
+          }
+
+          span:first-child {
+            flex: 1;
+          }
+        }
+
+        &-preview-main {
+          .sc-responsive-table-row-item:not(:first-child) {
+            display: none;
+          }
+
+          .sc-responsive-table-row-item:first-child {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+}

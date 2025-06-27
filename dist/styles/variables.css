@@ -1,0 +1,115 @@
+/**
+ * SpeccCapitals 组件库 CSS 变量
+ * 自动从Sass变量生成
+ */
+
+:root {
+--sc-color-primary: #1f3472;
+  --sc-color-secondary: #1c1a19;
+  --sc-color-success: #24a661;
+  --sc-color-warning: #ffae57;
+  --sc-color-error: #a1261f;
+  --sc-color-info: #1890ff;
+  --sc-color-white: #ffffff;
+  --sc-color-black: #1d1d1d;
+  --sc-color-gray-100: #f5f5f5;
+  --sc-color-gray-200: #e8e8e8;
+  --sc-color-gray-300: #d9d9d9;
+  --sc-color-gray-400: #bfbfbf;
+  --sc-color-gray-500: #8c8c8c;
+  --sc-color-gray-600: #595959;
+  --sc-color-gray-700: #434343;
+  --sc-color-gray-800: #262626;
+  --sc-color-gray-900: #1f1f1f;
+  --sc-color-background: #f0f2f5;
+  --sc-color-background-light: #fafafa;
+  --sc-color-background-dark: #141414;
+  --sc-color-text-primary: rgba(0, 0, 0, 0.85);
+  --sc-color-text-secondary: rgba(0, 0, 0, 0.65);
+  --sc-color-text-disabled: rgba(0, 0, 0, 0.25);
+  --sc-color-border: #d9d9d9;
+  --sc-color-border-light: #e8e8e8;
+  --sc-color-border-dark: #8c8c8c;
+  --sc-font-family: Ubuntu, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  --sc-font-size-xs: 12px;
+  --sc-font-size-sm: 14px;
+  --sc-font-size-md: 16px;
+  --sc-font-size-lg: 18px;
+  --sc-font-size-xl: 20px;
+  --sc-font-size-xxl: 24px;
+  --sc-line-height-tight: 1.2;
+  --sc-line-height-normal: 1.5;
+  --sc-line-height-loose: 1.8;
+  --sc-spacing-xxs: 4px;
+  --sc-spacing-xs: 8px;
+  --sc-spacing-sm: 12px;
+  --sc-spacing-md: 16px;
+  --sc-spacing-lg: 24px;
+  --sc-spacing-xl: 32px;
+  --sc-spacing-xxl: 48px;
+  --sc-border-width: 1px;
+  --sc-border-style: solid;
+  --sc-border-radius-sm: 2px;
+  --sc-border-radius: 4px;
+  --sc-border-radius-lg: 8px;
+  --sc-border-radius-xl: 16px;
+  --sc-border-radius-circle: 50%;
+  --sc-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --sc-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --sc-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --sc-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --sc-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --sc-transition-fast: 0.1s;
+  --sc-transition: 0.2s;
+  --sc-transition-slow: 0.3s;
+  --sc-transition-timing: ease-in-out;
+  --sc-z-negative: -1;
+  --sc-z-0: 0;
+  --sc-z-10: 10;
+  --sc-z-20: 20;
+  --sc-z-30: 30;
+  --sc-z-40: 40;
+  --sc-z-50: 50;
+  --sc-z-auto: auto;
+  --sc-z-dropdown: 1000;
+  --sc-z-sticky: 1100;
+  --sc-z-fixed: 1200;
+  --sc-z-modal: 1300;
+  --sc-z-popover: 1400;
+  --sc-z-tooltip: 1500;
+  --sc-grid-columns: 24;
+  --sc-grid-gutter: 16px;
+  --sc-screen-xs: 480px;
+  --sc-screen-sm: 576px;
+  --sc-screen-md: 768px;
+  --sc-screen-lg: 992px;
+  --sc-screen-xl: 1200px;
+  --sc-screen-xxl: 1600px;
+  --sc-button-height-sm: 24px;
+  --sc-button-height: 32px;
+  --sc-button-height-lg: 40px;
+  --sc-input-height-sm: 24px;
+  --sc-input-height: 32px;
+  --sc-input-height-lg: 40px;
+  --sc-table-header-bg: #fafafa;
+  --sc-table-row-hover-bg: #e6f7ff;
+  --sc-modal-header-padding: 16px 24px;
+  --sc-modal-body-padding: 24px;
+  --sc-modal-footer-padding: 10px 16px;
+}
+
+/* 暗色主题变量 */
+.sc-dark-theme {
+--sc-color-primary: #3a5fcc;
+  --sc-color-background: #121212;
+  --sc-color-background-light: #1f1f1f;
+  --sc-color-background-dark: #0a0a0a;
+  --sc-color-text-primary: rgba(255, 255, 255, 0.85);
+  --sc-color-text-secondary: rgba(255, 255, 255, 0.65);
+  --sc-color-text-disabled: rgba(255, 255, 255, 0.25);
+  --sc-color-border: #434343;
+  --sc-color-border-light: #262626;
+  --sc-color-border-dark: #595959;
+  --sc-table-header-bg: #1f1f1f;
+  --sc-table-row-hover-bg: #262626;
+}

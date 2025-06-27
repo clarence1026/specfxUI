@@ -1,0 +1,265 @@
+@import "../../styles/variables.scss";
+
+// 表单容器样式
+.formContainer {
+  width: 100%;
+
+  &.horizontal {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &.vertical {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &.inline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    align-items: flex-start;
+  }
+}
+
+// 表单项样式
+.formItem {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &.horizontal {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.inline {
+    width: auto;
+    margin-right: $spacing-md;
+    margin-bottom: 0;
+  }
+
+  &.hasError .formItemLabel {
+    color: $error;
+  }
+}
+
+// 表单标签样式
+.formItemLabel {
+  font-size: $font-size-regular;
+  font-weight: 500;
+  margin-bottom: $spacing-xs;
+  color: $black;
+
+  .horizontal & {
+    margin-right: $spacing-md;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+
+  .required &::before {
+    content: "*";
+    color: $error;
+    margin-right: $spacing-xxs;
+  }
+}
+
+// 表单控件容器
+.formItemControl {
+  flex: 1;
+  min-width: 0;
+}
+
+// 表单错误信息
+.formItemError {
+  color: $error;
+  font-size: $font-size-small;
+  margin-top: $spacing-xxs;
+  min-height: 18px;
+}
+
+// 表单帮助文本
+.formItemHelp {
+  color: $gray;
+  font-size: $font-size-small;
+  margin-top: $spacing-xxs;
+}
+
+// 表单字段基础样式
+.fieldBase {
+  width: 100%;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-regular;
+  border: 1px solid $light-gray;
+  border-radius: $border-radius;
+  background-color: $white;
+  transition: all $transition-normal;
+
+  &:hover {
+    border-color: $primary;
+  }
+
+  &:focus {
+    border-color: $primary;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($primary, 0.2);
+  }
+
+  &.disabled {
+    background-color: $disabled;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &.error {
+    border-color: $error;
+
+    &:focus {
+      box-shadow: 0 0 0 2px rgba($error, 0.2);
+    }
+  }
+}
+
+// 文本输入框样式
+.textField {
+  composes: fieldBase;
+  height: 36px;
+}
+
+// 文本域样式
+.textArea {
+  composes: fieldBase;
+  min-height: 80px;
+  resize: vertical;
+}
+
+// 选择框样式
+.select {
+  composes: fieldBase;
+  height: 36px;
+  appearance: none;
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 8.825L1.175 4 2.05 3.125 6 7.075 9.95 3.125 10.825 4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+// 复选框容器
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: $spacing-xs;
+    cursor: pointer;
+  }
+
+  &.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+
+    input[type="checkbox"] {
+      cursor: not-allowed;
+    }
+  }
+}
+
+// 单选框容器
+.radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: $spacing-md;
+
+  input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    margin-right: $spacing-xs;
+    cursor: pointer;
+  }
+
+  &.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+
+    input[type="radio"] {
+      cursor: not-allowed;
+    }
+  }
+}
+
+// 单选框组
+.radioGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+}
+
+// 开关样式
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .switchSlider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $light-gray;
+    transition: 0.4s;
+    border-radius: 34px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: $white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+  }
+
+  input:checked + .switchSlider {
+    background-color: $primary;
+  }
+
+  input:focus + .switchSlider {
+    box-shadow: 0 0 1px $primary;
+  }
+
+  input:checked + .switchSlider:before {
+    transform: translateX(22px);
+  }
+
+  &.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+
+    .switchSlider {
+      cursor: not-allowed;
+    }
+  }
+}

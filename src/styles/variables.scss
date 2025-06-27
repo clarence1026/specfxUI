@@ -1,0 +1,303 @@
+/**
+ * 主题样式变量
+ * 提供统一的颜色、尺寸和样式定义
+ */
+
+// 颜色系统
+$gradient-start: #1f3472;
+$gradient-end: #1f3472;
+$primary: #1f3472;
+$secondary: #1c1a19;
+$success: #24a661;
+$warning: #ffae57;
+$error: #a1261f;
+$info: #1890ff;
+
+$white: #ffffff;
+$black: #1d1d1d;
+$pale: #5d647d;
+$gray: #777777;
+$light-gray: #c5c5c5;
+$disabled: #fbfbfb;
+$body-background: #f9fafb;
+$mobile-menu: #212121;
+$new-message: #ffe6bd;
+$top-menu: #ffffff;
+$column-head: #f8faff;
+
+// 灰度色阶
+$gray-100: #f5f5f5;
+$gray-200: #e8e8e8;
+$gray-300: #d9d9d9;
+$gray-400: #bfbfbf;
+$gray-500: #8c8c8c;
+$gray-600: #595959;
+$gray-700: #434343;
+$gray-800: #262626;
+$gray-900: #1f1f1f;
+
+// 背景颜色
+$background: #f0f2f5;
+$background-light: #fafafa;
+$background-dark: #141414;
+
+// 文本颜色
+$text-primary: rgba(0, 0, 0, 0.85);
+$text-secondary: rgba(0, 0, 0, 0.65);
+$text-disabled: rgba(0, 0, 0, 0.25);
+
+// 边框颜色
+$border-color: #d9d9d9;
+$border-color-light: #e8e8e8;
+$border-color-dark: #8c8c8c;
+
+// 表格相关颜色
+$table-header-bg: #fafafa;
+$table-header-color: rgba(0, 0, 0, 0.85);
+$table-row-hover-bg: #e6f7ff;
+$table-row-odd-bg: #fafafa;
+$table-row-even-bg: #ffffff;
+$table-border-color: #e8e8e8;
+
+// 边框样式
+$border-width: 1px;
+$border-style: solid;
+$border-radius-sm: 2px;
+$border-radius: 4px;
+$border-radius-lg: 8px;
+$border-radius-xl: 16px;
+$border-radius-circle: 50%;
+$section-radius: 8px;
+$table-radius: 4px;
+
+// 字体
+$font-family: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif;
+
+// 字体大小
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-xxl: 24px;
+
+// 行高
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-loose: 1.8;
+
+// 间距
+$spacing-xxs: 4px;
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// 阴影
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// 过渡
+$transition-fast: 0.1s;
+$transition: 0.2s;
+$transition-slow: 0.3s;
+$transition-timing: ease-in-out;
+
+// z-index 层级
+$z-negative: -1;
+$z-0: 0;
+$z-10: 10;
+$z-20: 20;
+$z-30: 30;
+$z-40: 40;
+$z-50: 50;
+$z-auto: auto;
+$z-dropdown: 1000;
+$z-sticky: 1100;
+$z-fixed: 1200;
+$z-modal: 1300;
+$z-popover: 1400;
+$z-tooltip: 1500;
+
+// 栅格系统
+$grid-columns: 24;
+$grid-gutter: 16px;
+
+// 断点
+$screen-xs: 480px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1600px;
+
+// 组件特定变量
+$button-height-sm: 24px;
+$button-height: 32px;
+$button-height-lg: 40px;
+
+$input-height-sm: 24px;
+$input-height: 32px;
+$input-height-lg: 40px;
+
+$modal-header-padding: 16px 24px;
+$modal-body-padding: 24px;
+$modal-footer-padding: 10px 16px;
+
+/**
+ * CSS变量映射
+ * 将Sass变量映射为CSS变量，使非Sass项目也能使用
+ */
+:root {
+  // 颜色系统
+  --sc-color-primary: #{$primary};
+  --sc-color-secondary: #{$secondary};
+  --sc-color-success: #{$success};
+  --sc-color-warning: #{$warning};
+  --sc-color-error: #{$error};
+  --sc-color-info: #{$info};
+
+  --sc-color-white: #{$white};
+  --sc-color-black: #{$black};
+  --sc-color-gray-100: #{$gray-100};
+  --sc-color-gray-200: #{$gray-200};
+  --sc-color-gray-300: #{$gray-300};
+  --sc-color-gray-400: #{$gray-400};
+  --sc-color-gray-500: #{$gray-500};
+  --sc-color-gray-600: #{$gray-600};
+  --sc-color-gray-700: #{$gray-700};
+  --sc-color-gray-800: #{$gray-800};
+  --sc-color-gray-900: #{$gray-900};
+
+  // 背景颜色
+  --sc-color-background: #{$background};
+  --sc-color-background-light: #{$background-light};
+  --sc-color-background-dark: #{$background-dark};
+
+  // 文本颜色
+  --sc-color-text-primary: #{$text-primary};
+  --sc-color-text-secondary: #{$text-secondary};
+  --sc-color-text-disabled: #{$text-disabled};
+
+  // 边框颜色
+  --sc-color-border: #{$border-color};
+  --sc-color-border-light: #{$border-color-light};
+  --sc-color-border-dark: #{$border-color-dark};
+
+  // 字体
+  --sc-font-family: #{$font-family};
+  --sc-font-size-xs: #{$font-size-xs};
+  --sc-font-size-sm: #{$font-size-sm};
+  --sc-font-size-md: #{$font-size-md};
+  --sc-font-size-lg: #{$font-size-lg};
+  --sc-font-size-xl: #{$font-size-xl};
+  --sc-font-size-xxl: #{$font-size-xxl};
+
+  // 行高
+  --sc-line-height-tight: #{$line-height-tight};
+  --sc-line-height-normal: #{$line-height-normal};
+  --sc-line-height-loose: #{$line-height-loose};
+
+  // 间距
+  --sc-spacing-xxs: #{$spacing-xxs};
+  --sc-spacing-xs: #{$spacing-xs};
+  --sc-spacing-sm: #{$spacing-sm};
+  --sc-spacing-md: #{$spacing-md};
+  --sc-spacing-lg: #{$spacing-lg};
+  --sc-spacing-xl: #{$spacing-xl};
+  --sc-spacing-xxl: #{$spacing-xxl};
+
+  // 边框
+  --sc-border-width: #{$border-width};
+  --sc-border-style: #{$border-style};
+  --sc-border-radius-sm: #{$border-radius-sm};
+  --sc-border-radius: #{$border-radius};
+  --sc-border-radius-lg: #{$border-radius-lg};
+  --sc-border-radius-xl: #{$border-radius-xl};
+  --sc-border-radius-circle: #{$border-radius-circle};
+
+  // 阴影
+  --sc-shadow-sm: #{$shadow-sm};
+  --sc-shadow: #{$shadow};
+  --sc-shadow-md: #{$shadow-md};
+  --sc-shadow-lg: #{$shadow-lg};
+  --sc-shadow-xl: #{$shadow-xl};
+
+  // 过渡
+  --sc-transition-fast: #{$transition-fast};
+  --sc-transition: #{$transition};
+  --sc-transition-slow: #{$transition-slow};
+  --sc-transition-timing: #{$transition-timing};
+
+  // Z-index
+  --sc-z-negative: #{$z-negative};
+  --sc-z-0: #{$z-0};
+  --sc-z-10: #{$z-10};
+  --sc-z-20: #{$z-20};
+  --sc-z-30: #{$z-30};
+  --sc-z-40: #{$z-40};
+  --sc-z-50: #{$z-50};
+  --sc-z-auto: #{$z-auto};
+  --sc-z-dropdown: #{$z-dropdown};
+  --sc-z-sticky: #{$z-sticky};
+  --sc-z-fixed: #{$z-fixed};
+  --sc-z-modal: #{$z-modal};
+  --sc-z-popover: #{$z-popover};
+  --sc-z-tooltip: #{$z-tooltip};
+
+  // 栅格系统
+  --sc-grid-columns: #{$grid-columns};
+  --sc-grid-gutter: #{$grid-gutter};
+
+  // 断点
+  --sc-screen-xs: #{$screen-xs};
+  --sc-screen-sm: #{$screen-sm};
+  --sc-screen-md: #{$screen-md};
+  --sc-screen-lg: #{$screen-lg};
+  --sc-screen-xl: #{$screen-xl};
+  --sc-screen-xxl: #{$screen-xxl};
+
+  // 组件特定变量
+  --sc-button-height-sm: #{$button-height-sm};
+  --sc-button-height: #{$button-height};
+  --sc-button-height-lg: #{$button-height-lg};
+
+  --sc-input-height-sm: #{$input-height-sm};
+  --sc-input-height: #{$input-height};
+  --sc-input-height-lg: #{$input-height-lg};
+
+  --sc-table-header-bg: #{$table-header-bg};
+  --sc-table-row-hover-bg: #{$table-row-hover-bg};
+
+  --sc-modal-header-padding: #{$modal-header-padding};
+  --sc-modal-body-padding: #{$modal-body-padding};
+  --sc-modal-footer-padding: #{$modal-footer-padding};
+}
+
+// 暗色主题变量
+.sc-dark-theme {
+  --sc-color-primary: #3a5fcc;
+  --sc-color-background: #121212;
+  --sc-color-background-light: #1f1f1f;
+  --sc-color-background-dark: #0a0a0a;
+
+  --sc-color-text-primary: rgba(255, 255, 255, 0.85);
+  --sc-color-text-secondary: rgba(255, 255, 255, 0.65);
+  --sc-color-text-disabled: rgba(255, 255, 255, 0.25);
+
+  --sc-color-border: #434343;
+  --sc-color-border-light: #262626;
+  --sc-color-border-dark: #595959;
+
+  --sc-table-header-bg: #1f1f1f;
+  --sc-table-row-hover-bg: #262626;
+}
