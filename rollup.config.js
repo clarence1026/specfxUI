@@ -25,11 +25,26 @@ const createConfig = (input, output) => ({
       extensions: [".css", ".scss"],
       minimize: true,
       extract: true,
-      modules: true,
+      modules: {
+        exportGlobals: false,
+      },
       autoModules: true,
       namedExports: true,
       inject: false,
-      use: ["sass"],
+      use: {
+        sass: {
+          implementation: require("sass"),
+          sassOptions: {
+            outputStyle: "expanded",
+            quietDeps: true,
+            logger: {
+              warn: () => {}, // 静默警告
+              debug: () => {},
+            },
+            legacyFileVisitor: false,
+          },
+        },
+      },
     }),
     typescript({
       tsconfig: "./tsconfig.json",

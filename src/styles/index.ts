@@ -7,7 +7,6 @@
 import "./global.scss";
 import "./variables.scss";
 import "./mixins.scss";
-import "./variables.css";
 
 // 导出主题和CSS变量
 export { defaultTheme as theme } from "./theme/index";

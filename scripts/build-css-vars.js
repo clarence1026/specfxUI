@@ -7,7 +7,7 @@
 
 import fs from "fs";
 import path from "path";
-import sass from "sass";
+import * as sass from "sass";
 import chalk from "chalk";
 import { fileURLToPath } from "url";
 
@@ -35,6 +35,12 @@ function compileSass(source) {
     const result = sass.compile(source, {
       style: "expanded",
       loadPaths: [path.dirname(source)],
+      quietDeps: true,
+      logger: {
+        warn: () => {}, // 静默警告
+        debug: () => {},
+      },
+      legacyFileVisitor: false,
     });
     return result.css.toString();
   } catch (error) {

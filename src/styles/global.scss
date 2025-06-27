@@ -1,16 +1,21 @@
+@use "sass:math";
 /**
  * 全局样式
  * 源自 crm-front/src/common/styling/globalStyle.js
  */
 
-@import "./variables.scss";
-@import "./mixins.scss";
+@use "./variables.scss" as vars;
+@use "./mixins.scss" as mixins;
 
 // 字体定义
-@include font-face("ubuntu-font", "/fonts/UbuntuRegular/UbuntuRegular");
-@include font-face("ubuntu-font", "/fonts/UbuntuLight/UbuntuLight", 300);
-@include font-face("ubuntu-font", "/fonts/UbuntuMedium/UbuntuMedium", 500);
-@include font-face("ubuntu-font", "/fonts/UbuntuBold/UbuntuBold", 600);
+@include mixins.font-face("ubuntu-font", "/fonts/UbuntuRegular/UbuntuRegular");
+@include mixins.font-face("ubuntu-font", "/fonts/UbuntuLight/UbuntuLight", 300);
+@include mixins.font-face(
+  "ubuntu-font",
+  "/fonts/UbuntuMedium/UbuntuMedium",
+  500
+);
+@include mixins.font-face("ubuntu-font", "/fonts/UbuntuBold/UbuntuBold", 600);
 
 // 基础样式重置
 :global {
@@ -28,9 +33,9 @@
     -webkit-text-size-adjust: none;
     position: relative;
     height: 100%;
-    @include rem-baseline(100%);
-    @include respond-to(sm) {
-      @include rem-baseline(90%);
+    @include mixins.rem-baseline(100%);
+    @include mixins.respond-to(sm) {
+      @include mixins.rem-baseline(90%);
     }
   }
 
@@ -38,7 +43,7 @@
     min-width: 320px;
     position: relative;
     line-height: 1.35;
-    font-family: $font-family;
+    font-family: vars.$font-family;
     overflow: auto;
     cursor: default;
     height: 100%;
@@ -50,18 +55,18 @@
   }
 
   select {
-    font-family: $font-family;
+    font-family: vars.$font-family;
     outline: none;
   }
 
   input,
   textarea {
-    font-family: $font-family;
+    font-family: vars.$font-family;
     border: 1px solid;
     display: inline-block;
     width: 100%;
-    font-size: $font-size-regular;
-    padding: $spacing-xs $spacing-sm;
+    font-size: vars.$font-size-md;
+    padding: vars.$spacing-xs vars.$spacing-sm;
     outline: none;
     transition: all 0.4s ease;
     position: relative;
@@ -109,7 +114,7 @@
 
   // 按钮
   button {
-    font-family: $font-family;
+    font-family: vars.$font-family;
     outline: none;
     display: inline-block;
     cursor: pointer;
@@ -134,9 +139,9 @@
 
   // 预格式化文本
   pre {
-    font-family: $font-family;
+    font-family: vars.$font-family;
     white-space: pre-wrap;
-    font-size: $font-size-regular;
+    font-size: vars.$font-size-md;
   }
 
   // 列表
@@ -152,7 +157,7 @@
     display: flex;
     align-items: center;
 
-    @include respond-to(sm) {
+    @include mixins.respond-to(sm) {
       font-size: 26px;
       line-height: 31px;
     }

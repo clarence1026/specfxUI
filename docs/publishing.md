@@ -12,9 +12,30 @@ SpeccCapitals 组件库使用语义化版本（[Semantic Versioning](https://sem
 
 例如：从 `1.2.3` 到 `2.0.0` 表示有不兼容的 API 变更。
 
-## 详细的发布流程
+## 简化的发布流程（推荐）
 
-本项目使用 Lerna 进行版本管理，并结合 Git 标签和 GitHub Releases 进行发布。以下是详细的步骤：
+我们提供了一个自动化脚本来简化发布流程。只需运行以下命令：
+
+```bash
+pnpm release
+```
+
+脚本会引导您完成整个发布过程，包括：
+
+1. 选择版本类型（patch/minor/major）
+2. 检查工作区是否干净
+3. 构建项目
+4. 更新版本号
+5. 提交版本更新
+6. 创建Git标签
+7. 推送到远程仓库
+8. 提示您在GitHub上创建Release
+
+完成后，您只需要在GitHub上创建Release，填写发布说明即可。
+
+## 详细的手动发布流程
+
+如果您想手动控制发布流程的每个步骤，可以按照以下详细步骤操作：
 
 ### 1. 确保代码已提交
 
@@ -33,69 +54,38 @@ git checkout main
 git pull origin main
 ```
 
-### 2. 使用 Lerna 更新版本号
+### 2. 更新版本号
 
-Lerna 提供了强大的版本管理功能。在项目中，我们已经配置了 `lerna:version` 脚本来简化这个过程：
-
-```bash
-# 更新补丁版本 (0.1.0 -> 0.1.1)
-pnpm lerna:version patch
-
-# 或者更新次要版本 (0.1.0 -> 0.2.0)
-pnpm lerna:version minor
-
-# 或者更新主要版本 (0.1.0 -> 1.0.0)
-pnpm lerna:version major
-```
-
-当你运行这个命令时，Lerna 会：
-
-1. 检测自上次发布以来的更改
-2. 提示你确认版本号变更
-3. 更新 `package.json` 和 `lerna.json` 中的版本号
-4. 创建一个包含这些更改的提交
-5. 创建一个新的 Git 标签（如 `v0.2.0`）
-6. **自动推送**这些更改和标签到远程仓库（默认是 `origin`）
-
-例如，运行 `pnpm lerna:version patch` 的输出可能如下：
-
-```
-lerna notice cli v7.1.4
-lerna info versioning independent
-lerna info Looking for changed packages since v0.1.0
-? Select a new version (currently 0.1.0) (Use arrow keys)
-❯ Patch (0.1.1)
-  Minor (0.2.0)
-  Major (1.0.0)
-  Prepatch (0.1.1-alpha.0)
-  Preminor (0.2.0-alpha.0)
-  Premajor (1.0.0-alpha.0)
-  Custom Prerelease
-  Custom Version
-```
-
-选择适当的版本后，Lerna 会执行上述步骤。
-
-> **注意**：如果你不想自动推送到远程仓库，可以添加 `--no-push` 参数：
-> ```bash
-> pnpm lerna version patch --no-push
-> ```
-
-### 3. 手动推送（如果使用了 --no-push）
-
-如果你在上一步使用了 `--no-push` 参数，现在需要手动推送更改：
+手动更新 `package.json` 中的版本号：
 
 ```bash
-# 推送提交
+# 编辑 package.json 文件
+code package.json  # 或使用你喜欢的编辑器
+```
+
+根据语义化版本规则更新版本号：
+- 修复bug：0.1.0 -> 0.1.1 (patch)
+- 新功能：0.1.0 -> 0.2.0 (minor)
+- 破坏性变更：0.1.0 -> 1.0.0 (major)
+
+### 3. 提交版本更新并创建标签
+
+```bash
+# 提交版本更新
+git add package.json
+git commit -m "chore: bump version to x.y.z"
+
+# 创建标签
+git tag -a vx.y.z -m "Release version x.y.z"
+
+# 推送提交和标签
 git push origin main
-
-# 推送标签
-git push origin v0.1.1  # 替换为实际的版本标签
+git push origin vx.y.z
 ```
 
 ### 4. 更新 CHANGELOG（可选）
 
-Lerna 可以通过 `conventionalCommits` 选项自动生成变更日志，但如果你需要手动更新或补充 CHANGELOG.md：
+如果需要手动更新或补充 CHANGELOG.md：
 
 ```bash
 # 编辑 CHANGELOG.md
@@ -103,7 +93,7 @@ code CHANGELOG.md  # 或使用你喜欢的编辑器
 
 # 提交更改
 git add CHANGELOG.md
-git commit -m "docs: update changelog for v0.1.1"
+git commit -m "docs: update changelog for vx.y.z"
 git push origin main
 ```
 
@@ -124,8 +114,8 @@ pnpm build
 1. 在浏览器中打开你的 GitHub 仓库页面
 2. 点击 "Releases" 选项卡（通常在仓库名称下方）
 3. 点击 "Draft a new release" 按钮
-4. 在 "Choose a tag" 下拉菜单中，选择刚刚创建的标签（如 `v0.1.1`）
-5. 填写发布标题，通常与标签名称相同（如 "v0.1.1"）
+4. 在 "Choose a tag" 下拉菜单中，选择刚刚创建的标签（如 `vx.y.z`）
+5. 填写发布标题，通常与标签名称相同（如 "vx.y.z"）
 6. 在描述框中添加详细的更新日志
 7. 如果需要，可以上传构建后的文件（如 zip 格式的 dist 目录）
 8. 点击 "Publish release" 按钮发布
@@ -136,7 +126,7 @@ pnpm build
 
 ```bash
 # 安装特定版本
-pnpm add git+https://github.com/your-username/speccapitals-common.git#v0.1.1
+pnpm add git+https://github.com/your-username/speccapitals-common.git#vx.y.z
 
 # 或者安装最新版本
 pnpm add git+https://github.com/your-username/speccapitals-common.git
@@ -146,7 +136,7 @@ pnpm add git+https://github.com/your-username/speccapitals-common.git
 
 ```json
 "dependencies": {
-  "speccapitals-common": "git+https://github.com/your-username/speccapitals-common.git#v0.1.1"
+  "speccapitals-common": "git+https://github.com/your-username/speccapitals-common.git#vx.y.z"
 }
 ```
 
@@ -162,41 +152,27 @@ pnpm add git+https://github.com/your-username/speccapitals-common.git
 
 ## 常见问题
 
-### 如果 Lerna 版本更新失败怎么办？
-
-如果 `lerna version` 命令执行失败，可以尝试：
-
-1. 确保 Git 工作区是干净的（没有未提交的更改）
-2. 确保你有权限推送到远程仓库
-3. 尝试使用 `--no-push` 参数，然后手动推送
-
-```bash
-pnpm lerna:version patch --no-push
-git push origin main
-git push origin v0.1.1  # 替换为实际版本
-```
-
 ### 如何回滚版本？
 
 如果需要回滚版本，可以：
 
 1. 删除错误的标签
-2. 恢复 package.json 和 lerna.json 中的版本号
+2. 恢复 package.json 中的版本号
 3. 创建新的提交
 
 ```bash
 # 删除本地标签
-git tag -d v0.1.1
+git tag -d vx.y.z
 
 # 删除远程标签
-git push origin --delete v0.1.1
+git push origin --delete vx.y.z
 
-# 编辑 package.json 和 lerna.json 恢复版本号
+# 编辑 package.json 恢复版本号
 # ...
 
 # 提交更改
 git add .
-git commit -m "revert: restore version to 0.1.0"
+git commit -m "revert: restore version to a.b.c"
 git push origin main
 ```
 
@@ -207,5 +183,5 @@ git push origin main
 git tag -l
 
 # 查看特定版本的详细信息
-git show v0.1.0
+git show vx.y.z
 ```

@@ -1,62 +1,62 @@
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@use "../../styles/variables.scss" as vars;
+@use "../../styles/mixins.scss" as mixins;
 
 // 表格容器
 .tableContainer {
   position: relative;
   width: 100%;
-  margin-bottom: $spacing-lg;
+  margin-bottom: vars.$spacing-lg;
 }
 
 // 表格操作区
 .tableActions {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: $spacing-sm;
-  gap: $spacing-sm;
+  margin-bottom: vars.$spacing-sm;
+  gap: vars.$spacing-sm;
 }
 
 // 表格大小变体
 .tableSmall {
   :global(.ReactTable .rt-thead .rt-th),
   :global(.ReactTable .rt-tbody .rt-td) {
-    padding: $spacing-xxs $spacing-xs;
+    padding: vars.$spacing-xxs vars.$spacing-xs;
   }
 }
 
 .tableMedium {
   :global(.ReactTable .rt-thead .rt-th),
   :global(.ReactTable .rt-tbody .rt-td) {
-    padding: $spacing-xs $spacing-sm;
+    padding: vars.$spacing-xs vars.$spacing-sm;
   }
 }
 
 .tableLarge {
   :global(.ReactTable .rt-thead .rt-th),
   :global(.ReactTable .rt-tbody .rt-td) {
-    padding: $spacing-sm $spacing-md;
+    padding: vars.$spacing-sm vars.$spacing-md;
   }
 }
 
 // 带边框的表格
 .tableBordered {
   :global(.ReactTable) {
-    border: 1px solid $table-border-color;
-    border-radius: $table-radius;
+    border: 1px solid vars.$table-border-color;
+    border-radius: vars.$table-radius;
     overflow: hidden;
   }
 
   :global(.ReactTable .rt-thead .rt-th),
   :global(.ReactTable .rt-tbody .rt-td) {
-    border-right: 1px solid $table-border-color;
+    border-right: 1px solid vars.$table-border-color;
   }
 
   :global(.ReactTable .rt-thead) {
-    border-bottom: 1px solid $table-border-color;
+    border-bottom: 1px solid vars.$table-border-color;
   }
 
   :global(.ReactTable .rt-tbody .rt-tr-group) {
-    border-bottom: 1px solid $table-border-color;
+    border-bottom: 1px solid vars.$table-border-color;
   }
 }
 
@@ -64,13 +64,13 @@
 :global {
   // 表头样式
   .ReactTable .rt-thead {
-    background-color: $table-header-bg;
+    background-color: vars.$table-header-bg;
     font-weight: 500;
   }
 
   .ReactTable .rt-thead .rt-th {
     text-align: left;
-    color: $table-header-color;
+    color: vars.$table-header-color;
   }
 
   // 表格内容样式
@@ -79,37 +79,37 @@
   }
 
   .ReactTable .rt-tbody .rt-tr:hover {
-    background-color: $table-row-hover-bg;
+    background-color: vars.$table-row-hover-bg;
   }
 
   .ReactTable .rt-tbody .rt-tr.-odd {
-    background-color: $table-row-odd-bg;
+    background-color: vars.$table-row-odd-bg;
   }
 
   .ReactTable .rt-tbody .rt-tr.-even {
-    background-color: $table-row-even-bg;
+    background-color: vars.$table-row-even-bg;
   }
 
   // 分页样式
   .ReactTable .-pagination {
     box-shadow: none;
-    border-top: 1px solid $table-border-color;
+    border-top: 1px solid vars.$table-border-color;
   }
 
   .ReactTable .-pagination .-btn {
-    color: $primary;
+    color: vars.$primary;
     background-color: transparent;
   }
 
   .ReactTable .-pagination .-btn:not([disabled]):hover {
-    background-color: $table-row-hover-bg;
-    color: $primary;
+    background-color: vars.$table-row-hover-bg;
+    color: vars.$primary;
   }
 
   .ReactTable .-pagination input,
   .ReactTable .-pagination select {
-    border: 1px solid $table-border-color;
-    border-radius: $border-radius;
+    border: 1px solid vars.$table-border-color;
+    border-radius: vars.$border-radius;
   }
 
   // 加载状态
@@ -122,16 +122,16 @@
   }
 
   .ReactTable .-loading > div {
-    color: $primary;
+    color: vars.$primary;
   }
 }
 
 // 响应式表格样式
 .responsiveTable {
   width: 100%;
-  margin-bottom: $spacing-md;
-  border: 1px solid $table-border-color;
-  border-radius: $table-radius;
+  margin-bottom: vars.$spacing-md;
+  border: 1px solid vars.$table-border-color;
+  border-radius: vars.$table-radius;
   overflow: hidden;
 
   :global {
@@ -145,14 +145,14 @@
 
       &-thead {
         display: flex;
-        background-color: $table-header-bg;
-        color: $table-header-color;
+        background-color: vars.$table-header-bg;
+        color: vars.$table-header-color;
         font-weight: 500;
-        padding: $spacing-xs $spacing-sm;
+        padding: vars.$spacing-xs vars.$spacing-sm;
 
         span {
           flex: 1;
-          padding: $spacing-xs;
+          padding: vars.$spacing-xs;
 
           &:last-child {
             width: 60px;
@@ -163,30 +163,30 @@
 
       &-tbody {
         .sc-responsive-table-row {
-          border-top: 1px solid $table-border-color;
+          border-top: 1px solid vars.$table-border-color;
 
           &:nth-child(odd) {
-            background-color: $table-row-odd-bg;
+            background-color: vars.$table-row-odd-bg;
           }
 
           &:nth-child(even) {
-            background-color: $table-row-even-bg;
+            background-color: vars.$table-row-even-bg;
           }
 
           &:hover {
-            background-color: $table-row-hover-bg;
+            background-color: vars.$table-row-hover-bg;
           }
 
           &-preview {
             display: flex;
-            padding: $spacing-xs $spacing-sm;
+            padding: vars.$spacing-xs vars.$spacing-sm;
             cursor: pointer;
             outline: none;
           }
 
           &-item {
             flex: 1;
-            padding: $spacing-xs;
+            padding: vars.$spacing-xs;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -204,7 +204,7 @@
         width: 60px;
         flex: 0 0 60px;
         text-align: center;
-        color: $primary;
+        color: vars.$primary;
         cursor: pointer;
 
         &:hover {
@@ -213,14 +213,14 @@
       }
 
       &-row-details {
-        padding: $spacing-xs $spacing-md $spacing-md;
+        padding: vars.$spacing-xs vars.$spacing-md vars.$spacing-md;
         background-color: rgba(0, 0, 0, 0.02);
-        border-top: 1px solid $table-border-color;
+        border-top: 1px solid vars.$table-border-color;
       }
 
       &-details-item {
         display: flex;
-        margin-bottom: $spacing-xs;
+        margin-bottom: vars.$spacing-xs;
 
         &:last-child {
           margin-bottom: 0;
@@ -229,7 +229,7 @@
 
       &-detail-label {
         font-weight: 500;
-        margin-right: $spacing-sm;
+        margin-right: vars.$spacing-sm;
         min-width: 120px;
       }
 
@@ -241,13 +241,13 @@
     .responsive-table-pagination {
       display: flex;
       justify-content: flex-end;
-      padding: $spacing-sm;
-      border-top: 1px solid $table-border-color;
+      padding: vars.$spacing-sm;
+      border-top: 1px solid vars.$table-border-color;
     }
   }
 
   // 响应式适配
-  @include respond-to(sm) {
+  @include mixins.respond-to(sm) {
     border-radius: 0;
     border-left: none;
     border-right: none;
